@@ -36,11 +36,44 @@ class MutableQuadrupleClass<A, B, C, D> extends MutableTripleClass<A, B, C> impl
 
 	@Override
 	public D fourth() {
-		return fourth;
+		return this.fourth;
 	}
 
 	@Override
 	public void fourth(final D fourth) {
 		this.fourth = fourth;
+	}
+
+	@Override
+	public boolean equals(Object other) {
+		if(other == this) {
+			return true;
+		}
+
+		if(other == null) {
+			return false;
+		}
+
+		if(!(other instanceof Quadruple)) {
+			return false;
+		}
+
+		@SuppressWarnings("rawtypes")
+		final Quadruple quadruple = (Quadruple) other;
+
+		return quadruple.first().equals(this.first()) &&
+			   quadruple.second().equals(this.second()) &&
+			   quadruple.third().equals(this.third()) &&
+			   quadruple.fourth().equals(this.fourth());
+	}
+
+	@Override
+	public int hashCode() {
+		return super.hashCode() * this.fourth().hashCode();
+	}
+
+	@Override
+	public String toString() {
+		return "(" + this.first() + ", " + this.second() + ", " + this.third() + ", " + this.fourth() + ")";
 	}
 }

@@ -33,11 +33,41 @@ class MutableSingleClass<A> implements MutableSingle<A> {
 
 	@Override
 	public A first() {
-		return first;
+		return this.first;
 	}
 
 	@Override
 	public void first(final A first) {
 		this.first = first;
+	}
+
+	@Override
+	public boolean equals(Object other) {
+		if(other == this) {
+			return true;
+		}
+
+		if(other == null) {
+			return false;
+		}
+
+		if(!(other instanceof Single)) {
+			return false;
+		}
+
+		@SuppressWarnings("rawtypes")
+		final Single single = (Single) other;
+
+		return single.first().equals(this.first());
+	}
+
+	@Override
+	public int hashCode() {
+		return this.first().hashCode();
+	}
+
+	@Override
+	public String toString() {
+		return "(" + this.first() + ")";
 	}
 }

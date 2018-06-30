@@ -36,11 +36,42 @@ class MutablePairClass<A, B> extends MutableSingleClass<A> implements MutablePai
 
 	@Override
 	public B second() {
-		return second;
+		return this.second;
 	}
 
 	@Override
 	public void second(final B second) {
 		this.second = second;
+	}
+
+	@Override
+	public boolean equals(Object other) {
+		if(other == this) {
+			return true;
+		}
+
+		if(other == null) {
+			return false;
+		}
+
+		if(!(other instanceof Pair)) {
+			return false;
+		}
+
+		@SuppressWarnings("rawtypes")
+		final Pair pair = (Pair) other;
+
+		return pair.first().equals(this.first()) &&
+			   pair.second().equals(this.second());
+	}
+
+	@Override
+	public int hashCode() {
+		return super.hashCode() * this.second().hashCode();
+	}
+
+	@Override
+	public String toString() {
+		return "(" + this.first() + ", " + this.second() + ")";
 	}
 }

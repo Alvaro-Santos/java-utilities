@@ -36,11 +36,43 @@ class MutableTripleClass<A, B, C> extends MutablePairClass<A, B> implements Muta
 
 	@Override
 	public C third() {
-		return third;
+		return this.third;
 	}
 
 	@Override
 	public void third(final C third) {
 		this.third = third;
+	}
+
+	@Override
+	public boolean equals(Object other) {
+		if(other == this) {
+			return true;
+		}
+
+		if(other == null) {
+			return false;
+		}
+
+		if(!(other instanceof Triple)) {
+			return false;
+		}
+
+		@SuppressWarnings("rawtypes")
+		final Triple triple = (Triple) other;
+
+		return triple.first().equals(this.first()) &&
+			   triple.second().equals(this.second()) &&
+			   triple.third().equals(this.third());
+	}
+
+	@Override
+	public int hashCode() {
+		return super.hashCode() * this.third().hashCode();
+	}
+
+	@Override
+	public String toString() {
+		return "(" + this.first() + ", " + this.second() + ", " + this.third() + ")";
 	}
 }

@@ -31,7 +31,6 @@ public class IteratorUtils {
 			public Iterator<T> iterator() {
 				return iterator;
 			}
-			
 		};
 	}
 }

@@ -1,6 +1,6 @@
 /*
 The MIT License:
-Copyright (c) 2018, Álvaro António Santos
+Copyright (c) 2019, Álvaro António Santos
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,6 +23,8 @@ SOFTWARE.
 package tuples;
 
 class TripleClass<A, B, C> extends PairClass<A, B> implements Triple<A, B, C> {
+	private static final long serialVersionUID = 1L;
+
 	private final C third;
 
 	public TripleClass(final A first, final B second, final C third) {

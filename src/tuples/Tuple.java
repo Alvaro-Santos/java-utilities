@@ -1,6 +1,6 @@
 /*
 The MIT License:
-Copyright (c) 2018, Álvaro António Santos
+Copyright (c) 2019, Álvaro António Santos
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,9 @@ SOFTWARE.
 */
 package tuples;
 
-public interface Tuple {
+import java.io.Serializable;
+
+public interface Tuple extends Serializable {
 	public static <A> Single<A> of(final A first) {
 		return new SingleClass<>(first);
 	}

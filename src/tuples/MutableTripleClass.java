@@ -1,6 +1,6 @@
 /*
 The MIT License:
-Copyright (c) 2018, Álvaro António Santos
+Copyright (c) 2019, Álvaro António Santos
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,6 +23,8 @@ SOFTWARE.
 package tuples;
 
 class MutableTripleClass<A, B, C> extends MutablePairClass<A, B> implements MutableTriple<A, B, C> {
+	private static final long serialVersionUID = 1L;
+
 	private C third;
 
 	public MutableTripleClass() {
